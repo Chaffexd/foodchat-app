@@ -9,7 +9,7 @@ type InitiatorProps = {
 
 const InitiatorBubble = ({ text, sender, isDelivered = false }: InitiatorProps) => {
   return (
-    <div className="flex items-start gap-2.5 mb-2">
+    <div className="flex items-start gap-2.5 mb-4">
       <div className="flex flex-col w-full max-w-[320px] leading-1.5">
         <div className="flex justify-end items-center space-x-2 ltr:space-x-reverse">
           <span className="text-sm font-semibold text-gray-900 dark:text-white">
@@ -19,7 +19,7 @@ const InitiatorBubble = ({ text, sender, isDelivered = false }: InitiatorProps) 
             {formattedTimestamp}
           </span>
         </div>
-        <p className="text-sm font-normal py-2 text-gray-900 dark:text-white">
+        <p className="text-sm font-normal py-2 dark:text-white bg-sky-500 rounded-md text-white p-2">
           {text}
         </p>
         {isDelivered && (

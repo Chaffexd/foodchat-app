@@ -30,7 +30,7 @@ const ResponseBubble = ({
             {formattedTimestamp}
           </span>
         </div>
-        <p className="text-sm font-normal py-2 text-gray-900 dark:text-white">
+        <p className="text-sm font-normal py-2 dark:text-white bg-slate-200 rounded-md text-black p-2">
           {text}
         </p>
         {isDelivered && (
