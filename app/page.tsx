@@ -1,10 +1,9 @@
 "use client";
-
 import InitiatorBubble from "./components/ChatBubble/InitiatorBubble";
 import ResponseBubble from "./components/ChatBubble/ResponseBubble";
 import Prompt from "./components/Input/Prompt";
 import Title from "./components/Title/Title";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chatBot } from "./helpers/api";
 
 type MessageType = {
@@ -15,6 +14,7 @@ type MessageType = {
 export default function Home() {
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [initialLoad, setInitialLoad] = useState<boolean>(false);
 
   const addMessage = (text: string, isUser: boolean) => {
     const newMessage: MessageType = {
@@ -40,13 +40,18 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    if(!initialLoad) {
+      handleUserMessage("Hello Foodchat Assistant! 👋🏻");
+      setInitialLoad(true);
+    }
+  }, []);
+
   return (
-    <main className="">
-      <nav>
-        <Title />
-      </nav>
+    <main>
       <section className="w-full flex justify-center mt-6 flex-col items-center">
-        <div className="w-96 max-h-96 p-2 overflow-y-auto">
+        <Title />
+        <div className="w-96 min-h-96 max-h-96 p-2 overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index}>
               {message.isUser ? (

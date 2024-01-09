@@ -4,9 +4,13 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'flowbite.com'
+            },
+            {
+                hostname: 'images.pexels.com'
             }
         ]
-    }
+    },
+    reactStrictMode: false
 }
 
 module.exports = nextConfig

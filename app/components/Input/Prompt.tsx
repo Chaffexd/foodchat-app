@@ -3,8 +3,8 @@ import { PaperAirplaneIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 
 type PromptProps = {
-    onUserMessage: (input: string) => void;
-}
+  onUserMessage: (input: string) => void;
+};
 
 const Prompt = ({ onUserMessage }: PromptProps) => {
   const [prompt, setPrompt] = useState<string>("");
@@ -30,7 +30,7 @@ const Prompt = ({ onUserMessage }: PromptProps) => {
 
   return (
     <>
-      <div className="p-2 border-2 border-solid border-slate-200 rounded-md">
+      <div className="p-2 border-2 border-solid border-slate-200 rounded-md flex">
         <label htmlFor="input"></label>
         <textarea
           id="input"
@@ -41,8 +41,6 @@ const Prompt = ({ onUserMessage }: PromptProps) => {
           onChange={(event) => setPrompt(event.target.value)}
           onKeyDown={handleEnterPress}
         />
-      </div>
-      <div className="w-full flex justify-end mt-2">
         <button onClick={handleSubmision}>
           <PaperAirplaneIcon className="h-6 w-6" />
         </button>

@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image";
 import { formattedTimestamp } from "@/app/helpers/Date";
+import { useEffect, useRef } from "react";
 
 type ResponseBubbleProps = {
   text?: string;
@@ -12,11 +14,23 @@ const ResponseBubble = ({
   sender = "Foodchat Assistant",
   isDelivered = false,
 }: ResponseBubbleProps) => {
+  const isList = /\b\d+\./.test(text); // Check if text contains a number followed by a dot
+  const bubbleRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (bubbleRef.current) {
+      bubbleRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end"
+      })
+    }
+  }, [text])
+
   return (
-    <div className="flex items-start gap-2.5 mb-6">
+    <div className="flex items-start gap-2.5 mb-6" ref={bubbleRef}>
       <Image
         className="w-8 h-8 rounded-full"
-        src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+        src="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt="Jese image"
         width={20}
         height={20}
@@ -27,12 +41,22 @@ const ResponseBubble = ({
             {sender}
           </span>
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            {formattedTimestamp}
+            {formattedTimestamp()}
           </span>
         </div>
-        <p className="text-sm font-normal py-2 dark:text-white bg-slate-200 rounded-md text-black p-2">
-          {text}
-        </p>
+        {isList ? (
+          <ol className="text-sm font-normal py-2 dark:text-white bg-slate-200 rounded-md text-black p-2">
+            {text.split("\n").map((line, index) => (
+              <li key={index} className="mb-1">
+                {line.trim()}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="text-sm font-normal py-2 dark:text-white bg-slate-200 rounded-md text-black p-2">
+            {text}
+          </p>
+        )}
         {isDelivered && (
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
             Delivered
