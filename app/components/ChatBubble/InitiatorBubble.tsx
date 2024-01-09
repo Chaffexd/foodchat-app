@@ -25,8 +25,8 @@ const InitiatorBubble = ({
     }
   }, [text]);
   return (
-    <div className="flex items-start gap-2.5 mb-4" ref={bubbleRef}>
-      <div className="flex flex-col w-full max-w-[320px] leading-1.5">
+    <div className="flex justify-end items-start gap-2.5 mb-4" ref={bubbleRef}>
+      <div className="flex flex-col w-full w-auto max-w-[400px] leading-1.5">
         <div className="flex justify-end items-center space-x-2 ltr:space-x-reverse">
           <span className="text-sm font-semibold text-gray-900 dark:text-white">
             Me

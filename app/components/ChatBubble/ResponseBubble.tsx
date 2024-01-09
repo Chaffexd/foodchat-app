@@ -35,7 +35,7 @@ const ResponseBubble = ({
         width={20}
         height={20}
       />
-      <div className="flex flex-col w-full max-w-[320px] leading-1.5">
+      <div className="flex flex-col w-auto max-w-[400px] leading-1.5">
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
           <span className="text-sm font-semibold text-gray-900 dark:text-white">
             {sender}
