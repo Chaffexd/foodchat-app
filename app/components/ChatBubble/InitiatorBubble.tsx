@@ -1,5 +1,6 @@
 "use client";
 import { formattedTimestamp } from "@/app/helpers/Date";
+import { useAuth0 } from "@auth0/auth0-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
@@ -16,6 +17,17 @@ const InitiatorBubble = ({
 }: InitiatorProps) => {
   const bubbleRef = useRef<HTMLDivElement | null>(null);
 
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  
+  console.log(
+    "The user is: ",
+    user,
+    "They are authenticated? ",
+    isAuthenticated,
+    "Is loading?",
+    isLoading
+  );
+
   useEffect(() => {
     if (bubbleRef.current) {
       bubbleRef.current.scrollIntoView({
@@ -26,10 +38,10 @@ const InitiatorBubble = ({
   }, [text]);
   return (
     <div className="flex justify-end items-start gap-2.5 mb-4" ref={bubbleRef}>
-      <div className="flex flex-col w-full w-auto max-w-[400px] leading-1.5">
+      <div className="flex flex-col w-auto max-w-[400px] leading-1.5">
         <div className="flex justify-end items-center space-x-2 ltr:space-x-reverse">
           <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            Me
+            {isAuthenticated ? user?.name : "Me"}
           </span>
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
             {formattedTimestamp()}
@@ -46,7 +58,7 @@ const InitiatorBubble = ({
       </div>
       <Image
         className="w-8 h-8 rounded-full"
-        src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+        src={user?.picture || ""}
         alt="Jese image"
         width={20}
         height={20}

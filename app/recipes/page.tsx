@@ -1,11 +1,13 @@
+"use client"
+import AllRecipes from "../components/Recipes/AllRecipes"
 
-
-const page = () => {
+const RecipesPage = () => {
   return (
-    <div>
-        <h1>My Recipes Page</h1>
+    <div className="w-full h-screen">
+        <h1 className="text-2xl pl-24 pt-12">My Saved Recipes </h1>
+        <AllRecipes />
     </div>
   )
 }
 
-export default page
+export default RecipesPage

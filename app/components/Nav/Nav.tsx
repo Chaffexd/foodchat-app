@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="h-16 flex items-center justify-end pr-16">
         <Link href={"/"} className="hover:underline">Home</Link>
         <Link href={"/recipes"} className="pl-4 hover:underline">My Recipes</Link>
-        <Link href={"/login"} className="pl-4 hover:underline">Login</Link>
+        <Link href={"/login"} className="pl-4 hover:underline">Profile</Link>
     </nav>
   )
 }
