@@ -26,19 +26,21 @@ export default function Home() {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
   };
 
-  const handleUserMessage = async (userInput: string) => {
-    console.log("User Input from root ==", userInput);
-    addMessage(userInput, true);
+  const handleUserMessage = async (userInput: string | null) => {
+    if (userInput !== null) {
+      console.log("User Input from root ==", userInput);
+      addMessage(userInput, true);
 
-    setLoading(true);
-    try {
-      // gather AI response
-      const aiResponse = await chatBot(userInput);
-      addMessage(aiResponse, false);
-    } catch (error) {
-      console.error("Error getting response from GPT", error);
-    } finally {
-      setLoading(false);
+      setLoading(true);
+      try {
+        // gather AI response
+        const aiResponse = await chatBot(userInput);
+        addMessage(aiResponse!, false);
+      } catch (error) {
+        console.error("Error getting response from GPT", error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
