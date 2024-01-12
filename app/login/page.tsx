@@ -8,6 +8,8 @@ const LoginPage = () => {
 
   return (
     <div className="px-40 pt-20">
+      <title>{"Foodchat"}</title>
+      <meta name="description" content={"Profile page"}></meta>
       {isAuthenticated ? <LogoutButton /> : <LoginButton />}
     </div>
   );

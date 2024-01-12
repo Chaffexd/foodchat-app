@@ -55,6 +55,8 @@ export default function Home() {
 
   return (
     <main>
+      <title>Foodchat | Discover something new today</title>
+      <meta name="description" content="The foodchat app helps you discover what you should eat for your next meal."></meta>
       <section className="w-full flex justify-center mt-6 flex-col items-center">
         <Title />
         {isAuthenticated ? (

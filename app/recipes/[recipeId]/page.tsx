@@ -20,6 +20,8 @@ const RecipeDetailPage = ({ params }: { params: { recipeId: string } }) => {
 
   return (
     <div className="w-full px-20 mt-12">
+      <title>{recipeDetails?.title}</title>
+      <meta name="description" content={recipeDetails?.recipe}></meta>
       <h1 className="text-4xl mb-4">{recipeDetails?.title}</h1>
       <Link href={"/recipes"} className="flex items-center mb-4">
         <ArrowLeftCircleIcon className="h-6 w-6 mr-2" /><span>Back</span>
