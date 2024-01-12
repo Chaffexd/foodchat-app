@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { chatBot } from "./helpers/api";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useRecipeContext } from "./context/RecipeContext";
+import Link from "next/link";
 
 type MessageType = {
   text: string;
@@ -78,7 +79,7 @@ export default function Home() {
               <div></div>
             ) : (
               <h1 className="bg-red-400 p-4 rounded-md text-white text-center mt-12">
-                Please log in to use the chat assistant!
+                Please <Link href={"/login"} className="underline hover:text-slate-300">log in</Link> to use the chat assistant!
               </h1>
             )}
           </div>
