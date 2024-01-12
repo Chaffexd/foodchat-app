@@ -6,6 +6,7 @@ import Title from "./components/Title/Title";
 import { useEffect, useState } from "react";
 import { chatBot } from "./helpers/api";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useRecipeContext } from "./context/RecipeContext";
 
 type MessageType = {
   text: string;
@@ -13,9 +14,10 @@ type MessageType = {
 };
 
 export default function Home() {
-  const [messages, setMessages] = useState<MessageType[]>([]);
+  const { initialLoad, setInitialLoad, messages, setMessages } = useRecipeContext();
+  // const [messages, setMessages] = useState<MessageType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [initialLoad, setInitialLoad] = useState<boolean>(false);
+  // const [initialLoad, setInitialLoad] = useState<boolean>(false);
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const addMessage = (text: string, isUser: boolean) => {

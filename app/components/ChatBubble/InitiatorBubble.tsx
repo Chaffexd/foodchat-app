@@ -47,7 +47,7 @@ const InitiatorBubble = ({
             {formattedTimestamp()}
           </span>
         </div>
-        <p className="text-sm font-normal py-2 dark:text-white bg-sky-500 rounded-md text-white p-2">
+        <p className="text-sm w-auto font-normal py-2 dark:text-white bg-sky-500 rounded-md text-white p-2">
           {text}
         </p>
         {isDelivered && (
