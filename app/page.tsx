@@ -61,7 +61,7 @@ export default function Home() {
       <section className="w-full flex justify-center mt-6 flex-col items-center">
         <Title />
         {isAuthenticated ? (
-          <div className="w-2/5 min-h-96 max-h-96 p-2 overflow-y-auto">
+          <div className="sm:w-2/5 w-full min-h-96 max-h-96 p-2 overflow-y-auto">
             {messages.map((message, index) => (
               <div key={index}>
                 {message.isUser ? (
@@ -74,7 +74,7 @@ export default function Home() {
             {loading && <p className="loader ml-6"></p>}
           </div>
         ) : (
-          <div className="w-2/5 min-h-96 max-h-96 p-2 overflow-y-auto">
+          <div className="sm:w-2/5 w-full min-h-96 max-h-96 p-2 overflow-y-auto">
             {isLoading ? (
               <div></div>
             ) : (
@@ -84,7 +84,7 @@ export default function Home() {
             )}
           </div>
         )}
-        <div className="w-2/5 mt-4">
+        <div className="sm:w-2/5 w-full px-4 sm:px-0 mt-4">
           {isAuthenticated && <Prompt onUserMessage={handleUserMessage} />}
         </div>
       </section>

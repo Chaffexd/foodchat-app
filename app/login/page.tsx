@@ -7,7 +7,7 @@ const LoginPage = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   return (
-    <div className="px-40 pt-20">
+    <div className="sm:px-40 pt-20 flex justify-center">
       <title>{"Foodchat"}</title>
       <meta name="description" content={"Profile page"}></meta>
       {isAuthenticated ? <LogoutButton /> : <LoginButton />}
