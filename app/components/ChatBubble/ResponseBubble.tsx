@@ -27,6 +27,14 @@ const ResponseBubble = ({
     setShowDropdown(!showDropdown);
   };
 
+  const handleEmail = () => {
+    const subject = "Your Dinner!";
+    const body = text;
+    const mailTo = `mailto:?subject=${subject}&body=${body}`;
+
+    window.location.href = mailTo;
+  };
+
   const handleCopyRecipe = () => {
     navigator.clipboard.writeText(text);
     setCopyStatus("Copied!")
@@ -97,7 +105,7 @@ const ResponseBubble = ({
               />
             </div>
             {showDropdown && (
-              <div className="absolute right-52 top-96 bg-white border border-gray-300 rounded-md mt-1 shadow-lg">
+              <div className="absolute right-52 top-96 w-24 bg-white border border-gray-300 rounded-md mt-1 shadow-lg">
                 <button
                   className="block w-full rounded-md text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   onClick={handleSaveRecipe}
@@ -106,11 +114,7 @@ const ResponseBubble = ({
                 </button>
                 <button
                   className="block rounded-md w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Share via Link
-                </button>
-                <button
-                  className="block rounded-md w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={handleEmail}
                 >
                   Email
                 </button>
